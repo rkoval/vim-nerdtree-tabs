@@ -465,8 +465,8 @@ endfun
 " s:VimEnterHandler() {{{
 "
 fun! s:VimEnterHandler()
-  let l:open_nerd_tree_on_startup = (g:nerdtree_tabs_open_on_console_startup == 1 && !has('gui_vimr')) ||
-                                  \ (g:nerdtree_tabs_open_on_gui_startup == 1 && has('gui_vimr'))
+  let l:open_nerd_tree_on_startup = (g:nerdtree_tabs_open_on_console_startup == 1 && !has('gui_vimr') && !has('gui_running')) ||
+                                  \ (g:nerdtree_tabs_open_on_gui_startup == 1 && (has('gui_vimr') || has('gui_running')))
 
   let l:open_directory_on_startup = isdirectory(argv(0)) &&
 			  \ ((g:nerdtree_tabs_open_on_console_startup == 2 && !has('gui_vimr')) ||
